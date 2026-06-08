@@ -57,7 +57,7 @@ To bridge this gap, I developed this open-source application. By leveraging an o
 ### 1. Repository Setup
 Clone the repository to your local environment:
 ```bash
-git clone [https://github.com/rafael-smoura/hiring-feedback-automation.git](https://github.com/rafael-smoura/hiring-feedback-automation.git)
+git clone https://github.com/rafael-smoura/hiring-feedback-automation.git
 cd hiring-feedback-automation
 ```
 
