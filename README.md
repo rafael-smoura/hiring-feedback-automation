@@ -88,6 +88,13 @@ python main.py
 ---
 
 <p align="center">
+  
   <b>💡 Developed with purpose.</b><br>
   Engineering software means building solutions that resolve technical roadblocks while positively impacting human experiences.
+</p>
+
+---
+
+<p align="center">
+  <sub/>Animated icon by <a href="https://www.flaticon.com/free-animated-icons/email" title="email animated icons">Flaticon</a></sub>
 </p>
