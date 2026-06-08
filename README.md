@@ -1,5 +1,7 @@
+
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/b21b1816-b69a-4e22-96e7-4a35028335da" alt="Hiring Feedback Automation" width="250">
+  <img src="https://github.com/user-attachments/assets/97ae4be3-816e-4972-805b-ec9aa072cf32" alt="Hiring Feedback Automation" width="250">
 </p>
 
 <h1 align="center">
