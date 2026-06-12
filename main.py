@@ -49,7 +49,17 @@ CSV_FILE = "candidates/candidates.csv"
 # DEFAULT CANDIDATES (FALLBACK)
 # ============================================================================
 
-candidates = []
+candidates = [
+    """ {
+            "name": "Mario Souza",
+            "email": "mario@gmail.com"
+        },
+        {
+            "name": "Maria Souza",
+            "email": "maria@gmail.com"
+        }
+    """
+]
 
 # ============================================================================
 # LOAD CSV IF EXISTS
@@ -102,7 +112,7 @@ else:
 
 company_name = "V-lab"
 
-from_email = "mitogam3@gmail.com"
+from_email = "youremail@gmail.com"
 
 subject = f"Hiring Process Update — {company_name}"
 
