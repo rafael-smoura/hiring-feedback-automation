@@ -1,2 +1,12 @@
 *password.txt
-.venv
+
+# Ambiente Virtual
+.venv/
+venv/
+ENV/
+
+# Arquivos do Sistema e IDEs
+.vscode/
+__pycache__/
+*.pyc
+.DS_Store
