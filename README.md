@@ -9,71 +9,117 @@
 </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/language-Python-blue?style=flat-square&logo=python&logoColor=white" alt="Python" />
-  <img src="https://img.shields.io/badge/security-SSL%20%7C%20TLS-red?style=flat-square&logo=google-cloud&logoColor=white" alt="Security SSL/TLS" />
-  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="MIT License" />
+  <img src="https://img.shields.io/badge/language-Python-blue?style=flat-square&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/security-SSL%20%7C%20TLS-red?style=flat-square&logo=google-cloud&logoColor=white" />
+  <img src="https://img.shields.io/badge/data-CSV%20%7C%20Google%20Forms-orange?style=flat-square" />
+  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" />
 </p>
 
 ---
 
 ## 🎯 The Motivation Behind the Project
 
-Finding a job in tech is a challenging journey. Throughout my own experience, as well as observing fellow developers, I noticed a widespread problem in recruitment processes: **the complete lack of feedback**. 
+Finding a job in tech is a challenging journey. One recurring issue in recruitment processes is the **lack of feedback after technical assessments**, leaving candidates uncertain about their progress.
 
-Waiting weeks or months without knowing if you passed a technical assessment creates unnecessary anxiety, a feeling shared by thousands of candidates who are left in the dark. 
+At the same time, many companies—especially small and mid-sized ones—lack the infrastructure to automate communication with candidates.
 
-On the other side of the spectrum, many small to mid-sized organizations want to do the right thing but simply **lack the automation tools or the budget** to set up expensive HR platforms. 
+This project was created to solve that gap by providing a **lightweight, open-source email automation system** that integrates with **Google Forms exports (CSV)** and enables **bulk personalized email delivery via SMTP**.
 
-To bridge this gap, I developed this open-source application. By leveraging an organization's secure SMTP access, it provides a completely **free, secure, and straightforward solution** to automate hiring responses. This project aims to support both sides: helping businesses maintain professional communication while protecting the mental health and peace of mind of job applicants.
+The goal is to improve communication efficiency while maintaining simplicity, security, and full control over the process.
 
 ---
 
 ## 🚀 Features
 
-* **Secure Authentication:** Implements safe credential isolation using external configuration (`password.txt`), leveraging Google App Passwords to avoid hardcoded credentials.
-* **Encrypted Dispatch:** Uses standard `SMTP_SSL` via port 465 wrapped in Python's native `ssl` context to secure email communication.
-* **Encoding Reliability:** Built with `utf-8-sig` handling to automatically strip hidden Windows Byte Order Marks (BOM - `\ufeff`), mitigating runtime communication crashes.
-* **Clean & Professional Templates:** Easily customizable email bodies tailored for HR workflows.
+- **Google Forms Integration (CSV-based):** Automatically reads candidate data exported from Google Forms / Google Sheets.
+- **Bulk Email Dispatch:** Sends personalized emails to multiple recipients in a single execution.
+- **Duplicate Protection:** Prevents sending multiple emails to the same address.
+- **Secure Authentication:** Uses external `password.txt` file with Google App Passwords.
+- **Encrypted Communication:** Uses `SMTP_SSL` with TLS/SSL context.
+- **Fallback System:** Supports default candidates if CSV file is not available.
+- **Clean Data Parsing:** Handles UTF-8 encoding and structured CSV ingestion.
 
 ---
 
-## 🧰 Architecture & Components
+## 🧰 Architecture Overview
 
-<table width="100%">
-  <tr>
-    <td width="220px" align="left" style="border: none;">
-      <img src="https://skillicons.dev/icons?i=python" />
-    </td>
-    <td style="border: none; padding-left: 15px;">
-      <strong>Core Automation Module (main.py):</strong> Handles network sockets, SSL wrapper negotiation, environment stream normalization, and structures standard RFC-compliant <code>EmailMessage</code> objects.
-    </td>
-  </tr>
-</table>
+```text
+Google Forms
+    ↓
+Google Sheets
+    ↓
+CSV Export (candidates.csv)
+    ↓
+Python Automation Script
+    ↓
+SMTP Gmail Server
+    ↓
+Personalized Emails Sent
 
----
+```
+
+## 📦 Project Structure
+
+```
+hiring-feedback-automation/
+│
+├── main.py
+├── password.txt
+│
+└── candidates/
+    └── candidates.csv
+```
+
+## 📊 CSV Format (Google Forms Export)
+
+```
+Nome,E-mail
+Rafael Silva,rafael@gmail.com
+Maria Souza,maria@gmail.com
+```
+⚠️ Column names must match exactly: Nome and E-mail
+
+## ⚙️ How It Works
+
+The script loads candidate data from ```candidates/candidates.csv```
+If the file does not exist, fallback candidates are used.
+It removes duplicate emails automatically.
+A personalized email is generated for each candidate.
+All emails are sent through a single secure SMTP session.
 
 ## 📦 How to Setup and Run
 
-### 1. Repository Setup
-Clone the repository to your local environment:
-```bash
+### 1. Clone the repository
+```
 git clone https://github.com/rafael-smoura/hiring-feedback-automation.git
 cd hiring-feedback-automation
 ```
+### 2. Configure credentials
 
-### 2. Credential Configuration
-Create a file named password.txt exactly in the root folder of the project. Generate a 16-digit App Password inside your Google Account Security dashboard and paste it inside the file without spaces:
+Create a file named:
 
-```
-your十六digitapppassword
-```
-🔐 Security Note: Make sure your .gitignore file includes password.txt so your credentials are never pushed to public servers.
+`password.txt`
 
-### 3. Execution
-Run the script using your Python environment launcher:
-```
-python main.py
-```
+Inside it, place your Google App Password:
+
+`your16digitapppassword`
+
+🔐 Make sure this file is included in `.gitignore`.
+
+### 3. Prepare candidates file (optional)
+
+Export from Google Sheets:
+
+`candidates/candidates.csv`
+### 4. Run the application
+`python main.py`
+## 🔐 Security Notes
+
+- Passwords are never hardcoded.
+- Uses SSL/TLS encrypted SMTP connection.
+- No external APIs required.
+- Fully offline processing of CSV data.
+
 
 ## 🌎 Connect With Me
 <p align="left">
